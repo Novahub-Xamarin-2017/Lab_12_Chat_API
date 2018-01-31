@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Web;
+﻿using System.Runtime.Serialization;
 
-namespace WebApplication1.Models
+namespace WebApplication1.Models.DTOModels
 {
     [DataContract]
     public class SignUpForm
