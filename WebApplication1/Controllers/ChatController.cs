@@ -52,6 +52,17 @@ namespace WebApplication1.Controllers
             allOtherUsers.ForEach(user => SendMessage(user, message));
         }
 
+        [HttpDelete]
+        [Route("api/chats/signout")]
+        public IHttpActionResult LogOut([FromBody] string token)
+        {
+            var user = chatContext.Users.FirstOrDefault(x => x.FirebaseToken == token);
+            if (user == null) 
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            user.FirebaseToken = null;
+            return Ok();
+        }
+
         private static void SendMessage(User user, string message)
         {
             const string rootUrl = "https://fcm.googleapis.com";
